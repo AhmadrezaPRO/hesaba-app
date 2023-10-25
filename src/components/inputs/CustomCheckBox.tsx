@@ -11,13 +11,13 @@ export const CustomCheckbox = ({ name, label, ...props }: CustomInputProps) => {
 	const error = errors[name]?.message as string | undefined
 
 	return (
-		<div>
-			<label className='flex gap-2 items-center cursor-pointer w-fit'>
-				<input {...props} {...register(name)} />
+		<div className="custom-checkbox">
+			<label className="custom-checkbox__label">
+				<input {...props} {...register(name)} className="custom-checkbox__input" />
 				{label}
 			</label>
 
-			<ErrorMessage error={error} />
+			<ErrorMessage error={error} className="custom-checkbox__error" />
 		</div>
-	)
+	);
 }

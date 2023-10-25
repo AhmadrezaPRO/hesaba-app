@@ -1,17 +1,14 @@
 export const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
 	return (
-		<>
-			<h1 className='text-center my-10 text-5xl'>
+		<div className="layout">
+			<h1 className="layout__title">
 				<span>Practice Task</span>
-				<span className='font-bold bg-clip-text text-transparent  text-[#EC5990]'>
-					{' - '}
-					Ahmad Yoozbashi
-				</span>
+				<span className="layout__author">{' - Ahmad Yoozbashi'}</span>
 			</h1>
 
-			<main className='grid sm:grid-cols-2 grid-cols-1 sm:mb-0 mb-10 gap-10 place-items-start justify-items-center px-5'>
+			<main className="layout layout--grid">
 				{children}
 			</main>
-		</>
-	)
+		</div>
+	);
 }

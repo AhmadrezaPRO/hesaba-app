@@ -40,3 +40,28 @@
 .read-the-docs {
   color: #888;
 }
+
+/* CustomCheckbox.css */
+
+/* Block */
+.custom-checkbox {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Element within Block */
+.custom-checkbox__input {
+  /* Define your checkbox input styles here */
+}
+
+/* Element within Block */
+.custom-checkbox__label {
+  /* Define your label styles here */
+}
+
+/* Element within Block */
+.custom-checkbox__error {
+  /* Define your error message styles here */
+}

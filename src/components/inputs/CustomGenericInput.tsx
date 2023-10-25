@@ -13,21 +13,21 @@ export const CustomInput = ({ name, label, ...props }: CustomInputProps) => {
 	const id = `${name}-${props.type}-${label}`
 
 	return (
-		<div className='w-full flex gap-1 flex-col'>
+		<div className="custom-input">
 			{label && (
-				<label className='text-white text-sm' htmlFor={id}>
+				<label className="custom-input__label" htmlFor={id}>
 					{label}
 				</label>
 			)}
 
 			<input
-				className='py-1 px-2 rounded w-full text-black'
+				className="custom-input__field"
 				{...register(name)}
 				{...props}
 				id={id}
 			/>
 
-			<ErrorMessage error={error} />
+			<ErrorMessage error={error} className="custom-input__error" />
 		</div>
 	)
 }

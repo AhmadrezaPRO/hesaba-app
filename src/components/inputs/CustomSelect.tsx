@@ -12,14 +12,15 @@ export const CustomSelect = ({ name, label, options, ...props }: CustomInputProp
 	const id = `${name}-${props.type}-${label}`
 
 	return (
-		<div className='flex flex-col gap-2'>
-			<div className='flex items-center gap-4'>
-				<label htmlFor={id}>{label}</label>
-				<select {...register(name)} {...props} id={id} className='p-2 rounded flex-1 text-black'>
-					<option value=''>--- Select option ---</option>
+		<div className="custom-select">
+			<div className="custom-select__label">{label}</div>
+			<div className="custom-select__container">
+				<label htmlFor={id}></label>
+				<select {...register(name)} {...props} id={id} className="custom-select__input">
+					{/*<option value=''>--- Select option ---</option>*/}
 					{options &&
 						options.map(({ desc, value }) => (
-							<option key={value} value={value}>
+							<option key={value} value={value} className="custom-select__option">
 								{desc}
 							</option>
 						))}

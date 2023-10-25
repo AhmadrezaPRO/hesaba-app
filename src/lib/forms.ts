@@ -7,9 +7,9 @@ export const forms: { [K in FormSection]: InputProps[] } =
     exchange: [
         {
             type: "select",
-            name: "rol",
+            name: "source",
             label: "From: ",
-            value: "",
+            value: "usd",
             options: [
                 {
                     value: "usd",
@@ -52,9 +52,9 @@ export const forms: { [K in FormSection]: InputProps[] } =
         },
         {
             type: "select",
-            name: "rol",
+            name: "dest",
             label: "To: ",
-            value: "",
+            value: "eur",
             options: [
                 {
                     value: "usd",

@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800;900&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+    --primary-color: #7f5af0;
+    --secondary-color: #16161a;
+    --tertiary-color: #2cb67d;
+    --background-color: #242629;
+    --dark-color: #010101;
+}
 
 * {
     margin: 0;
@@ -13,4 +16,188 @@
 body {
     background-color: #081229;
     color: #fffffe;
+}
+
+/* Layout.css */
+
+/* Block */
+.layout {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 5rem;
+}
+
+/* Element within Block */
+.layout__title {
+    font-weight: bold;
+    background-clip: text;
+    color: var(--primary-color);
+}
+
+/* Another Element within Block */
+.layout__author {
+    font-weight: bold;
+    background-clip: text;
+    color: var(--secondary-color);
+}
+
+/* Block Modifier (optional) */
+.layout--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 0;
+    gap: 10px;
+    place-items: start;
+    justify-items: center;
+    padding: 5px;
+}
+
+/* Form.css */
+
+/* Block */
+.form {
+    background: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(127, 90, 240, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-height: 390px;
+}
+
+/* Element within Block */
+.form__title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Element within Block */
+.form__section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* Element within Block */
+.form__button {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    transition: opacity 0.3s;
+    font-weight: bold;
+}
+
+.form__button:hover {
+    opacity: 0.9;
+}
+
+.form__button:active {
+    opacity: 1;
+}
+
+/* CustomInput.css */
+
+/* Block */
+.custom-input {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    width: 100%;
+}
+
+/* Element within Block */
+.custom-input__label {
+    color: white;
+    font-size: 14px;
+}
+
+/* Element within Block */
+.custom-input__field {
+    padding: 1px 2px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100%;
+    color: black;
+}
+
+/* Element within Block */
+.custom-input__error {
+    /* Define your error message styles here */
+}
+
+/* CustomRadio.css */
+
+/* Block */
+.custom-radio {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Element within Block */
+.custom-radio__label {
+    color: black; /* Define label styles here */
+}
+
+/* Element within Block */
+.custom-radio__options {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Element within Block */
+.custom-radio__option {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    cursor: pointer;
+    padding: 1px;
+    border-radius: 4px;
+}
+
+/* Modifier */
+.custom-radio__option--hover {
+    text-decoration: underline;
+}
+
+/* CustomSelect.css */
+
+/* Block */
+.custom-select {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+/* Element within Block */
+.custom-select__label {
+    color: white; /* Define label styles here */
+    font-size: 14px;
+}
+
+/* Element within Block */
+.custom-select__container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Element within Block */
+.custom-select__input {
+    padding: 2px;
+    border-radius: 4px;
+    flex: 1;
+    color: black;
+}
+
+/* Element within Block */
+.custom-select__option {
+    /* Define option styles here */
 }
