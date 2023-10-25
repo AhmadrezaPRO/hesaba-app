@@ -2,10 +2,10 @@ export const Layout = ({ children }: { children: JSX.Element | JSX.Element[] }) 
 	return (
 		<>
 			<h1 className='text-center my-10 text-5xl'>
-				<span>Dynamic Form</span>
+				<span>Practice Task</span>
 				<span className='font-bold bg-clip-text text-transparent  text-[#EC5990]'>
 					{' - '}
-					React Hook Form
+					Ahmad Yoozbashi
 				</span>
 			</h1>
 

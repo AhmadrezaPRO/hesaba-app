@@ -1,7 +1,7 @@
 import { OptionalObjectSchema, TypeOfShape } from 'yup/lib/object'
 import { AnyObject } from 'yup/lib/types';
 
-export type FormSection = 'register' | 'another'
+export type FormSection = 'exchange'
 
 export interface InputProps {
     type: 'text' | 'radio' | 'email' | 'password' | 'select' | 'checkbox'

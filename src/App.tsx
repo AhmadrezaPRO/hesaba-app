@@ -1,41 +1,19 @@
 import { Layout, Form } from './components'
 import { getInputs } from './lib'
 
-interface SignUpFormType {
-	username: string
-	password: string
-	repeat_password: string
-}
+interface ExchangeFormType {}
 
-interface AnotherFormType {}
-
-const signUpForm = getInputs<SignUpFormType>('register')
-const anotherForm = getInputs<AnotherFormType>('another')
+const exchangeForm = getInputs<ExchangeFormType>('exchange')
 
 const App = () => {
-	const onSubmitSignUp = (data: unknown) => console.log({ singUp: data })
-
-	const onSubmitAnotherForm = (data: unknown) => console.log({ another: data })
-
-	const initialValuesSignUp: SignUpFormType = {
-		...signUpForm.initialValues,
-		username: '@franklin361'
-	}
+	const onSubmitExchangeForm = (data: unknown) => console.log({ exchange: data })
 
 	return (
 		<Layout>
 			<Form
-				{...signUpForm}
-				initialValues={initialValuesSignUp}
-				titleForm='Sign Up!'
-				onSubmit={onSubmitSignUp}
-				labelButtonSubmit='Create account'
-			/>
-
-			<Form
-				{...anotherForm}
-				titleForm='Another form!'
-				onSubmit={onSubmitAnotherForm}
+				{...exchangeForm}
+				titleForm='Exchange Form!'
+				onSubmit={onSubmitExchangeForm}
 				labelButtonSubmit='Send info'
 			/>
 		</Layout>
