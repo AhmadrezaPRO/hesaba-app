@@ -14,7 +14,7 @@ const App = () => {
 				{...exchangeForm}
 				titleForm='Exchange Form!'
 				onSubmit={onSubmitExchangeForm}
-				labelButtonSubmit='Send info'
+				labelButtonSubmit='Exchange'
 			/>
 		</Layout>
 	)

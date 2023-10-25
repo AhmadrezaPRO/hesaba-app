@@ -5,42 +5,23 @@ import { FormSection, InputProps } from '../types';
 export const forms: { [K in FormSection]: InputProps[] } =
 {
     exchange: [
-
-        {
-            label: "E-mail address",
-            type: "email",
-            name: "email",
-            placeholder: "correo@correo.com",
-            value: "",
-            validations: [
-                {
-                    type: "required",
-                    message: "Email is required"
-                },
-                {
-                    type: "isEmail",
-                    message: "Email no valid"
-                }
-            ],
-
-        },
         {
             type: "select",
             name: "rol",
-            label: "Select an option: ",
+            label: "From: ",
             value: "",
             options: [
                 {
-                    value: "admin",
-                    desc: "Admin",
+                    value: "usd",
+                    desc: "USD",
                 },
                 {
-                    value: "user",
-                    desc: "User"
+                    value: "eur",
+                    desc: "EUR"
                 },
                 {
-                    value: "super-admin",
-                    desc: "Super Admin"
+                    value: "gbp",
+                    desc: "GBP"
                 }
             ],
             validations: [
@@ -51,45 +32,68 @@ export const forms: { [K in FormSection]: InputProps[] } =
             ]
         },
         {
-            type: "radio",
-            name: "gender",
-            label: "Gender: ",
+            label: "Input Amount: ",
+            type: "number",
+            name: "username",
+            placeholder: "Enter Amount for Exchange...",
+            value: "",
+            validations: [
+                {
+                    type: "minLength",
+                    value: 3,
+                    message: "Min. 3 characters",
+                },
+                {
+                    type: "required",
+                    message: "Username is required"
+                },
+            ],
+
+        },
+        {
+            type: "select",
+            name: "rol",
+            label: "To: ",
             value: "",
             options: [
                 {
-                    value: 'man',
-                    desc: "Man"
+                    value: "usd",
+                    desc: "USD",
                 },
                 {
-
-                    value: "woman",
-                    desc: "Woman"
+                    value: "eur",
+                    desc: "EUR"
                 },
                 {
-
-                    value: "other",
-                    desc: "Other"
-                },
+                    value: "gbp",
+                    desc: "GBP"
+                }
             ],
             validations: [
                 {
                     type: "required",
-                    message: "Gender is required"
+                    message: "Rol is required"
                 }
             ]
         },
         {
-            type: "checkbox",
-            name: "terms",
-            typeValue: "boolean",
-            label: "Terms and Conditions",
-            value: false,
+            label: "Output Amount: ",
+            type: "number",
+            name: "username",
+            disabled: true,
+            value: "",
             validations: [
                 {
-                    type: "isTrue",
-                    message: "Accept the terms!"
-                }
-            ]
+                    type: "minLength",
+                    value: 3,
+                    message: "Min. 3 characters",
+                },
+                {
+                    type: "required",
+                    message: "Username is required"
+                },
+            ],
+
         },
     ]
 }
