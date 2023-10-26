@@ -3,7 +3,9 @@ import {FormProvider, useForm} from 'react-hook-form'
 import {CustomCheckbox, CustomInput, CustomRadio, CustomSelect} from '../components'
 import {InputProps, SchemaForm} from '../types'
 import {exchangeArray} from "../lib";
-import {useMemo} from "react";
+import {useEffect, useMemo} from "react";
+import {useQuery} from "react-query";
+import {useDispatch, useSelector} from "react-redux";
 
 interface Props {
     onSubmit: (data: unknown) => void
@@ -25,19 +27,68 @@ export const Form = ({...props}: Props) => {
         labelButtonSubmit = 'Submit'
     } = props
 
+    const dispatch = useDispatch();
+    // const { usd, eur, gbp } = useSelector((state) => state.wallet);
+    const wallet = useSelector((state) => state.wallet);
+    // console.log(usd)
+
     const formMethods = useForm({
         resolver: yupResolver(validationSchema),
         defaultValues: {...(initialValues as any)}
     })
 
     // const sourceSymbol = formMethods.getValues("source")
-    // const watchSource = formMethods.watch('source')
-    // const sourceSymgol = useMemo(() => {
-    //     if (watchSource)
-    //         return exchangeArray.find(element => element.value === watchSource.value).symbol
-    // }, [watchSource])
-    // // console.log(formMethods.getValues("source"))
-    // console.log(sourceSymgol)
+    const watchSource = formMethods.watch('source')
+    const watchDest = formMethods.watch('dest')
+
+    const {data, refetch} = useQuery({
+        queryKey: ['fetchExchange', watchSource],
+        // queryFn: () => fetchExchange(watchSource),
+        queryFn: () => {},
+        enabled: false,
+        onSuccess: (res) => {
+            console.log(res?.conversion_rates)
+        },
+        staleTime: 5000,
+        // refetchOnMount: false,
+        refetchOnWindowFocus: true,
+        refetchInterval: 5000
+    });
+
+    const convertedData = data?.conversion_rates[watchDest.toUpperCase()]
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            // This will refetch your data every 5 seconds
+            refetch();
+        }, 5000); // 5000 milliseconds = 5 seconds
+
+        // Cleanup the interval when the component unmounts
+        return () => {
+            clearInterval(interval);
+        };
+    }, [refetch]);
+
+    useEffect(() => {
+        if (watchSource)
+            refetch();
+    }, [watchSource])
+
+    const fetchExchange = async (currency) => {
+        const res = await fetch(`https://v6.exchangerate-api.com/v6/711fbda37723e456740c14ca/latest/${currency}`);
+        console.log(res)
+        return res.json();
+    };
+
+    // console.log(watchSource)
+    const sourceSymbol = useMemo(() => {
+        if (watchSource)
+            return exchangeArray.find(element => element.value === watchSource).symbol
+    }, [watchSource])
+    const destSymbol = useMemo(() => {
+        if (watchSource)
+            return exchangeArray.find(element => element.value === watchDest).symbol
+    }, [watchDest])
 
     const createInputs = () =>
         inputs.map(({validations, typeValue, value, ...inputProps}) => {
@@ -71,7 +122,7 @@ export const Form = ({...props}: Props) => {
                                 />
                             </svg>
                         </button>
-                        <p>1 = {100}</p>
+                        <p>{sourceSymbol}1 = {convertedData}{destSymbol}</p>
                     </section>
                 default:
                     return <CustomInput {...inputProps} key={inputProps.name}/>
@@ -91,11 +142,11 @@ export const Form = ({...props}: Props) => {
                 )}
 
                 <div>
-                    <p>Current Source Wallet: {100}</p>
+                    <p>Source Wallet: {wallet[watchSource]}{sourceSymbol}</p>
                 </div>
                 <section className="form__section">{createInputs()}</section>
                 <div>
-                    <p>Current Destination Wallet: {0}</p>
+                    <p>Destination Wallet: {wallet[watchDest]}{destSymbol}</p>
                 </div>
                 <button
                     className="form__button"
