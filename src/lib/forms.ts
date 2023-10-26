@@ -14,14 +14,17 @@ export const forms: { [K in FormSection]: InputProps[] } =
                 {
                     value: "usd",
                     desc: "USD",
+                    symbol: '$'
                 },
                 {
                     value: "eur",
-                    desc: "EUR"
+                    desc: "EUR",
+                    symbol: '€'
                 },
                 {
                     value: "gbp",
-                    desc: "GBP"
+                    desc: "GBP",
+                    symbol: '£'
                 }
             ],
             validations: [
@@ -46,6 +49,9 @@ export const forms: { [K in FormSection]: InputProps[] } =
 
         },
         {
+            type: "circle"
+        },
+        {
             type: "select",
             name: "dest",
             label: "To: ",
@@ -54,14 +60,17 @@ export const forms: { [K in FormSection]: InputProps[] } =
                 {
                     value: "usd",
                     desc: "USD",
+                    symbol: '$'
                 },
                 {
                     value: "eur",
-                    desc: "EUR"
+                    desc: "EUR",
+                    symbol: '€'
                 },
                 {
                     value: "gbp",
-                    desc: "GBP"
+                    desc: "GBP",
+                    symbol: '£'
                 }
             ],
             validations: [

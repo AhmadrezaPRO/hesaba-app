@@ -44,7 +44,7 @@ body {
 /* Block Modifier (optional) */
 .layout--grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     margin-bottom: 0;
     gap: 10px;
     place-items: start;
@@ -64,7 +64,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    min-height: 390px;
+    /*min-height: 390px;*/
 }
 
 /* Element within Block */
@@ -79,7 +79,7 @@ body {
 
 /* Element within Block */
 .form__section {
-    flex: 1;
+    /*flex: 1;*/
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -213,4 +213,27 @@ body {
 .error-message__text {
     color: red;
     font-size: 14px;
+}
+
+/* Circular button CSS */
+.circle-button-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 0;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.circle-button {
+    width: 40px; /* Change this to your desired button size */
+    height: 40px; /* Change this to your desired button size */
+    background-color: #007bff; /* Change this to your desired background color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
