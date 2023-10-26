@@ -44,17 +44,11 @@ export const Form = ({...props}: Props) => {
 
     // console.log(!watchInput)
 
-    const {data, refetch} = useQuery({
+    const {data} = useQuery({
         queryKey: ['fetchExchange', watchSource],
-        // queryFn: () => fetchExchange(watchSource),
-        queryFn: () => {
-        },
-        enabled: false,
-        // onSuccess: (res) => {
-        //     // console.log(res?.conversion_rates)
-        // },
+        queryFn: () => fetchExchange(watchSource),
+        enabled: !!watchSource,
         staleTime: 5000,
-        // refetchOnMount: false,
         refetchOnWindowFocus: true,
         refetchInterval: 5000
     });
@@ -62,23 +56,6 @@ export const Form = ({...props}: Props) => {
     console.log(data)
 
     const convertedData = data?.conversion_rates[watchDest.toUpperCase()]
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            // This will refetch your data every 5 seconds
-            refetch();
-        }, 5000); // 5000 milliseconds = 5 seconds
-
-        // Cleanup the interval when the component unmounts
-        return () => {
-            clearInterval(interval);
-        };
-    }, [refetch]);
-
-    useEffect(() => {
-        if (watchSource)
-            refetch();
-    }, [watchSource])
 
     useEffect(()=>{
         if (!!watchInput){
