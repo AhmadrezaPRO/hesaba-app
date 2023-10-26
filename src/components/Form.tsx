@@ -2,6 +2,8 @@ import {yupResolver} from '@hookform/resolvers/yup'
 import {FormProvider, useForm} from 'react-hook-form'
 import {CustomCheckbox, CustomInput, CustomRadio, CustomSelect} from '../components'
 import {InputProps, SchemaForm} from '../types'
+import {exchangeArray} from "../lib";
+import {useMemo} from "react";
 
 interface Props {
     onSubmit: (data: unknown) => void
@@ -28,6 +30,15 @@ export const Form = ({...props}: Props) => {
         defaultValues: {...(initialValues as any)}
     })
 
+    // const sourceSymbol = formMethods.getValues("source")
+    // const watchSource = formMethods.watch('source')
+    // const sourceSymgol = useMemo(() => {
+    //     if (watchSource)
+    //         return exchangeArray.find(element => element.value === watchSource.value).symbol
+    // }, [watchSource])
+    // // console.log(formMethods.getValues("source"))
+    // console.log(sourceSymgol)
+
     const createInputs = () =>
         inputs.map(({validations, typeValue, value, ...inputProps}) => {
             switch (inputProps.type) {
@@ -38,7 +49,10 @@ export const Form = ({...props}: Props) => {
                 case 'radio':
                     return <CustomRadio {...inputProps} key={inputProps.name}/>
                 case 'circle':
-                    return <section className="circle-button-container">
+                    return <section
+                        key={inputProps.name}
+                        className="circle-button-container"
+                    >
                         <button className="circle-button">
                             <svg
                                 width="36"

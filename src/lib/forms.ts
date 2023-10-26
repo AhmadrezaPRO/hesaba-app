@@ -1,6 +1,22 @@
 import { FormSection, InputProps } from '../types';
 
-
+export const exchangeArray= [
+    {
+        value: "usd",
+        desc: "USD",
+        symbol: '$'
+    },
+    {
+        value: "eur",
+        desc: "EUR",
+        symbol: '€'
+    },
+    {
+        value: "gbp",
+        desc: "GBP",
+        symbol: '£'
+    }
+]
 
 export const forms: { [K in FormSection]: InputProps[] } =
 {
@@ -10,23 +26,7 @@ export const forms: { [K in FormSection]: InputProps[] } =
             name: "source",
             label: "From: ",
             value: "usd",
-            options: [
-                {
-                    value: "usd",
-                    desc: "USD",
-                    symbol: '$'
-                },
-                {
-                    value: "eur",
-                    desc: "EUR",
-                    symbol: '€'
-                },
-                {
-                    value: "gbp",
-                    desc: "GBP",
-                    symbol: '£'
-                }
-            ],
+            options: exchangeArray,
             validations: [
                 {
                     type: "required",
@@ -49,30 +49,15 @@ export const forms: { [K in FormSection]: InputProps[] } =
 
         },
         {
-            type: "circle"
+            type: "circle",
+            name: "circle"
         },
         {
             type: "select",
             name: "dest",
             label: "To: ",
             value: "eur",
-            options: [
-                {
-                    value: "usd",
-                    desc: "USD",
-                    symbol: '$'
-                },
-                {
-                    value: "eur",
-                    desc: "EUR",
-                    symbol: '€'
-                },
-                {
-                    value: "gbp",
-                    desc: "GBP",
-                    symbol: '£'
-                }
-            ],
+            options: exchangeArray,
             validations: [
                 {
                     type: "required",
