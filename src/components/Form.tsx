@@ -27,7 +27,6 @@ export const Form = ({...props}: Props) => {
         labelButtonSubmit = 'Submit'
     } = props
 
-    const dispatch = useDispatch();
     // const { usd, eur, gbp } = useSelector((state) => state.wallet);
     const wallet = useSelector((state) => state.wallet);
     // console.log(usd)
@@ -40,6 +39,9 @@ export const Form = ({...props}: Props) => {
     // const sourceSymbol = formMethods.getValues("source")
     const watchSource = formMethods.watch('source')
     const watchDest = formMethods.watch('dest')
+    const watchInput= formMethods.watch('inputAmount')
+
+    console.log(!watchInput)
 
     const {data, refetch} = useQuery({
         queryKey: ['fetchExchange', watchSource],
@@ -162,7 +164,8 @@ export const Form = ({...props}: Props) => {
                 <button
                     className="form__button"
                     type="submit"
-                    disabled={!data}
+                    disabled={!watchInput || !data}
+                    // disabled={!data && !watchInput}
                 >
                     {labelButtonSubmit}
                 </button>
