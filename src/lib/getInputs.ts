@@ -1,7 +1,7 @@
 import * as Yup from "yup";
-import { AnyObject } from "yup/lib/types";
-import { FormSection, InputProps } from '../types';
-import { forms } from '../lib';
+import {AnyObject} from "yup/lib/types";
+import {FormSection, InputProps} from '../types';
+import {forms} from '../lib';
 
 type YupBoolean = Yup.BooleanSchema<boolean | undefined, AnyObject, boolean | undefined>
 type YupString = Yup.StringSchema<string | undefined, AnyObject, string | undefined>
@@ -15,11 +15,33 @@ const generateValidations = (field: InputProps): YupBoolean | YupString | YupNum
 
     for (const rule of field.validations) {
         switch (rule.type) {
-            case 'isTrue': schema = (schema as YupBoolean).isTrue(rule.message); break;
-            case 'isEmail': schema = (schema as YupString).email(rule.message); break;
-            case 'minLength': schema = (schema as YupString).min(rule.value as number, rule.message); break;
-            case 'oneOf': schema = (schema as YupString).oneOf([Yup.ref(rule.ref as string)], rule.message); break;
-            default: schema = schema.required(rule.message); break;
+            case 'minLength':
+                schema = (schema as YupString).min(rule.value as number, rule.message);
+                break;
+            case 'oneOf':
+                schema = (schema as YupString).oneOf([Yup.ref(rule.ref as string)], rule.message);
+                break;
+            case 'twoDecimalPlaces':
+                schema = (schema as YupString).test('two-decimal-places', rule.message, (value) => {
+                    if (value === undefined || value === null) return true;
+                    // Check if the value has up to two decimal places
+                    return /^\d+(\.\d{1,2})?$/.test(value);
+                });
+                break;
+            //     .number(rule.value)
+            //     .test(
+            //         "is-decimal",
+            //         "The amount should be a decimal with maximum two digits after comma",
+            //         (val: any) => {
+            //             if (val != undefined) {
+            //                 return /^\d+(\.\d{0,2})?$/.test(val);
+            //             }
+            //             return true;
+            //         }
+            //     ); break;
+            default:
+                schema = schema.required(rule.message);
+                break;
         }
     }
 
@@ -45,7 +67,7 @@ export const getInputs = <T>(section: FormSection) => {
     }
 
     return {
-        validationSchema: Yup.object({ ...validationsFields }),
+        validationSchema: Yup.object({...validationsFields}),
         initialValues: initialValues as T,
         inputs: forms[section],
     };

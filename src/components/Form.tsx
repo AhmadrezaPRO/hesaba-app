@@ -152,6 +152,7 @@ export const Form = ({...props}: Props) => {
     return (
         <FormProvider {...formMethods}>
             <form
+                noValidate
                 onSubmit={formMethods.handleSubmit(onSubmit)}
                 className="form"
             >
@@ -171,7 +172,7 @@ export const Form = ({...props}: Props) => {
                 <button
                     className="form__button"
                     type="submit"
-                    disabled={!watchInput || !data || wallet[watchSource] < watchInput}
+                    // disabled={!watchInput || !data || wallet[watchSource] < watchInput}
                     // disabled={!data && !watchInput}
                 >
                     {labelButtonSubmit}

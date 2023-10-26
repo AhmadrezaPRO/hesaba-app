@@ -45,6 +45,11 @@ export const forms: { [K in FormSection]: InputProps[] } =
                     type: "required",
                     message: "Input Amount is required"
                 },
+                {
+                    type: "twoDecimalPlaces",
+                    // value: 2,
+                    message: "Only Two Decimal Places Allowed"
+                },
             ],
 
         },
