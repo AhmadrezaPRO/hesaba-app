@@ -48,8 +48,6 @@ export const Form = ({...props}: Props) => {
         queryKey: ['fetchExchange', watchSource],
         queryFn: () => fetchExchange(watchSource),
         enabled: !!watchSource,
-        staleTime: 5000,
-        refetchOnWindowFocus: true,
         refetchInterval: 5000
     });
 
