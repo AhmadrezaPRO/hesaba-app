@@ -95,11 +95,20 @@ body {
     font-weight: bold;
 }
 
-.form__button:hover {
+/* Style for the disabled button */
+.form__button:disabled {
+    background: grey; /* Change this to the desired grey color */
+    opacity: 1; /* Reset opacity when disabled */
+    cursor: not-allowed; /* Show not-allowed cursor for disabled button */
+}
+
+/* Hover effect for enabled button */
+.form__button:not(:disabled):hover {
     opacity: 0.9;
 }
 
-.form__button:active {
+/* Active effect for enabled button */
+.form__button:not(:disabled):active {
     opacity: 1;
 }
 

@@ -55,6 +55,8 @@ export const Form = ({...props}: Props) => {
         refetchInterval: 5000
     });
 
+    console.log(data)
+
     const convertedData = data?.conversion_rates[watchDest.toUpperCase()]
 
     useEffect(() => {
@@ -151,6 +153,7 @@ export const Form = ({...props}: Props) => {
                 <button
                     className="form__button"
                     type="submit"
+                    disabled={!data}
                 >
                     {labelButtonSubmit}
                 </button>
