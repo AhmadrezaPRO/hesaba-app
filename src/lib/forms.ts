@@ -27,25 +27,20 @@ export const forms: { [K in FormSection]: InputProps[] } =
             validations: [
                 {
                     type: "required",
-                    message: "Rol is required"
+                    message: "Source Currency is required"
                 }
             ]
         },
         {
             label: "Input Amount: ",
             type: "number",
-            name: "username",
+            name: "inputAmount",
             placeholder: "Enter Amount for Exchange...",
             value: "",
             validations: [
                 {
-                    type: "minLength",
-                    value: 3,
-                    message: "Min. 3 characters",
-                },
-                {
                     type: "required",
-                    message: "Username is required"
+                    message: "Input Amount is required"
                 },
             ],
 
@@ -72,27 +67,27 @@ export const forms: { [K in FormSection]: InputProps[] } =
             validations: [
                 {
                     type: "required",
-                    message: "Rol is required"
+                    message: "Destination Currency is required"
                 }
             ]
         },
         {
             label: "Output Amount: ",
             type: "number",
-            name: "username",
+            name: "outputAmount",
             disabled: true,
             value: "",
-            validations: [
-                {
-                    type: "minLength",
-                    value: 3,
-                    message: "Min. 3 characters",
-                },
-                {
-                    type: "required",
-                    message: "Username is required"
-                },
-            ],
+            // validations: [
+            //     {
+            //         type: "minLength",
+            //         value: 3,
+            //         message: "Min. 3 characters",
+            //     },
+            //     {
+            //         type: "required",
+            //         message: "Username is required"
+            //     },
+            // ],
 
         },
     ]

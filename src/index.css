@@ -23,22 +23,21 @@ body {
 
 /* Block */
 .layout {
-    text-align: center;
     margin-top: 10px;
-    font-size: 2.5rem;
+
 }
 
 /* Element within Block */
 .layout__title {
+    font-size: 4rem;
     font-weight: bold;
-    background-clip: text;
     color: var(--primary-color);
+    text-align: center;
 }
 
 /* Another Element within Block */
 .layout__author {
     font-weight: bold;
-    background-clip: text;
     color: var(--white-color);
 }
 
@@ -201,4 +200,17 @@ body {
 /* Element within Block */
 .custom-select__option {
     /* Define option styles here */
+}
+
+/* Block */
+.error-message {
+    width: 100%;
+    display: grid;
+    place-content: start;
+}
+
+/* Element within Block */
+.error-message__text {
+    color: red;
+    font-size: 14px;
 }

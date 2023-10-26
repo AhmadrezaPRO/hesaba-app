@@ -16,6 +16,16 @@ const App = () => {
 				onSubmit={onSubmitExchangeForm}
 				labelButtonSubmit='Exchange'
 			/>
+			<section>
+				<div>
+					<p>Current Source Wallet: </p>
+					<p>{1000}</p>
+				</div>
+				<div>
+					<p>Current Destination Wallet: </p>
+					<p>{2000}</p>
+				</div>
+			</section>
 		</Layout>
 	)
 }
