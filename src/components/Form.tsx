@@ -41,7 +41,7 @@ export const Form = ({...props}: Props) => {
     const watchDest = formMethods.watch('dest')
     const watchInput= formMethods.watch('inputAmount')
 
-    console.log(!watchInput)
+    // console.log(!watchInput)
 
     const {data, refetch} = useQuery({
         queryKey: ['fetchExchange', watchSource],
@@ -49,9 +49,9 @@ export const Form = ({...props}: Props) => {
         queryFn: () => {
         },
         enabled: false,
-        onSuccess: (res) => {
-            console.log(res?.conversion_rates)
-        },
+        // onSuccess: (res) => {
+        //     // console.log(res?.conversion_rates)
+        // },
         staleTime: 5000,
         // refetchOnMount: false,
         refetchOnWindowFocus: true,
@@ -78,6 +78,12 @@ export const Form = ({...props}: Props) => {
         if (watchSource)
             refetch();
     }, [watchSource])
+
+    useEffect(()=>{
+        if (!!watchInput){
+            formMethods.setValue('outputAmount', watchInput*convertedData)
+        }
+    }, [watchInput, convertedData])
 
     const fetchExchange = async (currency) => {
         const res = await fetch(`https://v6.exchangerate-api.com/v6/711fbda37723e456740c14ca/latest/${currency}`);
