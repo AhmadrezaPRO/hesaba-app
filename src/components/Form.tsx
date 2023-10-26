@@ -44,7 +44,8 @@ export const Form = ({...props}: Props) => {
     const {data, refetch} = useQuery({
         queryKey: ['fetchExchange', watchSource],
         // queryFn: () => fetchExchange(watchSource),
-        queryFn: () => {},
+        queryFn: () => {
+        },
         enabled: false,
         onSuccess: (res) => {
             console.log(res?.conversion_rates)
@@ -106,7 +107,15 @@ export const Form = ({...props}: Props) => {
                         key={inputProps.name}
                         className="circle-button-container"
                     >
-                        <button className="circle-button">
+                        <button
+                            type="button"
+                            className="circle-button"
+                            onClick={() => formMethods.reset((prev) => ({
+                                ...prev,
+                                source: watchDest,
+                                dest: watchSource
+                            }))}
+                        >
                             <svg
                                 width="36"
                                 height="36"
