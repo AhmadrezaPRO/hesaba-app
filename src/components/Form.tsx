@@ -5,7 +5,8 @@ import {InputProps, SchemaForm} from '../types'
 import {exchangeArray} from "../lib";
 import {useEffect, useMemo} from "react";
 import {useQuery} from "react-query";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
+import {ErrorMessage} from "./ErrorMessage";
 
 interface Props {
     onSubmit: (data: unknown) => void
@@ -170,11 +171,12 @@ export const Form = ({...props}: Props) => {
                 <button
                     className="form__button"
                     type="submit"
-                    disabled={!watchInput || !data}
+                    disabled={!watchInput || !data || wallet[watchSource] < watchInput}
                     // disabled={!data && !watchInput}
                 >
                     {labelButtonSubmit}
                 </button>
+                {wallet[watchSource] < watchInput && <ErrorMessage error={"Input is higher than current wallet money!"} className="custom-input__error" />}
             </form>
         </FormProvider>
     );
